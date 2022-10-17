@@ -1,0 +1,58 @@
+﻿@inherits LayoutComponentBase
+
+@using System.Diagnostics
+
+<div class="page">
+    <div class="sidebar sidebar-color">
+        <NavMenu />
+    </div>
+
+    <main style="height:100%">
+        <div class="top-row px-4" style="display:flex; justify-content:left">
+            <select @onchange=ColorChange>
+                <option value="green">Green</option>
+                <option value="yellow">Yellow</option>
+                <option value="red">Red</option>
+            </select>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+<style>
+    :root {
+        /* theme variables */
+        --page-bg: @pageBackColor;
+        --sidebar-bg:@sidebarBackColor;
+
+    }
+    .page{
+        height:100vh;
+        background-color: var(--page-bg);
+    }
+    .sidebar{
+        background-image: none!important;
+        background-color:var(--sidebar-bg);
+    }
+    .top-row{
+        background-color: var(--sidebar-bg)!important;
+    }
+</style>
+@code{
+    string pageBackColor;
+    string sidebarBackColor;
+
+    protected override void OnInitialized()
+    {
+        pageBackColor = "green";
+        sidebarBackColor = "#07111cab";
+    }
+    private void ColorChange(ChangeEventArgs args)
+    {
+        pageBackColor = args.Value.ToString();
+    }
+}
+
