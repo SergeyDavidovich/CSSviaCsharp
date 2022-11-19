@@ -42,13 +42,25 @@
     }
 </style>
 @code{
+
+    //public readonly struct ThemesColors
+    //{
+    //    public ThemesColors()
+    //    {
+    //        Primary = "";
+    //        Secondary = "";
+    //    }
+    //    public string Primary{ get; }
+    //    public string Secondary { get; }
+    //}
+
     string pageBackColor;
     string sidebarBackColor;
 
     protected override void OnInitialized()
     {
         pageBackColor = "green";
-        sidebarBackColor = "#07111cab";
+        sidebarBackColor = "#07111CAB";
     }
     private void ColorChange(ChangeEventArgs args)
     {
